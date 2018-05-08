@@ -15,4 +15,32 @@ public class Vote extends BaseModel {
 
     @Column
     private String name = "Were we will eat?";
+
+    public Vote(List<VoteItem> voteItems) {
+        this.voteItems = voteItems;
+    }
+
+    public Vote(List<VoteItem> voteItems, String name) {
+        this.voteItems = voteItems;
+        this.name = name;
+    }
+
+    public Vote() {
+    }
+
+    public List<VoteItem> getVoteItems() {
+        return voteItems;
+    }
+
+    public void setVoteItems(List<VoteItem> voteItems) {
+        this.voteItems = voteItems;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

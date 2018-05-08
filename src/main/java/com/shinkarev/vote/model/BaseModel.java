@@ -14,6 +14,6 @@ import java.io.Serializable;
 public abstract class BaseModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    protected long id;
+    protected Long id;
 
 }
