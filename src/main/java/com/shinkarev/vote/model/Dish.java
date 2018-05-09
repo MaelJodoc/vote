@@ -37,4 +37,13 @@ public class Dish extends BaseModel {
     public void setCost(long cost) {
         this.cost = cost;
     }
+
+    @Override
+    public String toString() {
+        return "Dish{" +
+                "name='" + name + '\'' +
+                ", cost=" + cost +
+                ", id=" + id +
+                '}';
+    }
 }

@@ -1,8 +1,8 @@
 package com.shinkarev.vote.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import org.hibernate.annotations.Fetch;
+
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -13,7 +13,7 @@ public class VoteItem extends BaseModel {
     @Column
     private String restaurantName;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Dish> dishes;
 
     public VoteItem(String restaurantName, List<Dish> dishes) {
@@ -38,5 +38,14 @@ public class VoteItem extends BaseModel {
 
     public void setDishes(List<Dish> dishes) {
         this.dishes = dishes;
+    }
+
+    @Override
+    public String toString() {
+        return "VoteItem{" +
+                "restaurantName='" + restaurantName + '\'' +
+                ", dishes=" + dishes +
+                ", id=" + id +
+                '}';
     }
 }

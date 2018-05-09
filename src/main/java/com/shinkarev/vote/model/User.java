@@ -7,14 +7,15 @@ import javax.validation.constraints.Email;
 /**
  * Created by Смена on 07.05.2018.
  */
-@Entity
+
 public class User extends BaseModel {
     @Column
-    @Email
     private String email;
 
+    @Column
     private String password;
 
+    @Column
     private boolean isBanned;
 
     public User(@Email String email, String password) {

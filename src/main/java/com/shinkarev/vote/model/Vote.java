@@ -1,8 +1,8 @@
 package com.shinkarev.vote.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -10,7 +10,7 @@ import java.util.List;
  */
 @Entity
 public class Vote extends BaseModel {
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<VoteItem> voteItems;
 
     @Column
@@ -20,9 +20,9 @@ public class Vote extends BaseModel {
         this.voteItems = voteItems;
     }
 
-    public Vote(List<VoteItem> voteItems, String name) {
-        this.voteItems = voteItems;
+    public Vote(String name, List<VoteItem> voteItems ) {
         this.name = name;
+        this.voteItems = voteItems;
     }
 
     public Vote() {
@@ -42,5 +42,14 @@ public class Vote extends BaseModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Vote{" +
+                "voteItems=" + voteItems +
+                ", name='" + name + '\'' +
+                ", id=" + id +
+                '}';
     }
 }
