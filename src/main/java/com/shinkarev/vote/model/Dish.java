@@ -1,13 +1,15 @@
 package com.shinkarev.vote.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import org.springframework.data.jpa.domain.AbstractPersistable;
+
+import javax.persistence.*;
 
 /**
  * Created by Смена on 07.05.2018.
  */
 @Entity
-public class Dish extends BaseModel {
+@Table(name = "DISH")
+public class Dish extends AbstractPersistable<Long> {
     @Column
     private String name;
 
@@ -43,7 +45,7 @@ public class Dish extends BaseModel {
         return "Dish{" +
                 "name='" + name + '\'' +
                 ", cost=" + cost +
-                ", id=" + id +
+                ", id=" + getId() +
                 '}';
     }
 }

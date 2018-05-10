@@ -1,16 +1,20 @@
 package com.shinkarev.vote.model;
 
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Смена on 07.05.2018.
  */
 @Entity
-public class Vote extends BaseModel {
+@Table(name = "VOTE")
+public class Vote extends AbstractPersistable<Long> {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "vote_id")
     private List<VoteItem> voteItems;
 
     @Column
@@ -20,7 +24,7 @@ public class Vote extends BaseModel {
         this.voteItems = voteItems;
     }
 
-    public Vote(String name, List<VoteItem> voteItems ) {
+    public Vote(String name, List<VoteItem> voteItems) {
         this.name = name;
         this.voteItems = voteItems;
     }
@@ -49,7 +53,7 @@ public class Vote extends BaseModel {
         return "Vote{" +
                 "voteItems=" + voteItems +
                 ", name='" + name + '\'' +
-                ", id=" + id +
+                ", id=" + getId() +
                 '}';
     }
 }
