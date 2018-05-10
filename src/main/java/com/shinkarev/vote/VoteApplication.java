@@ -32,7 +32,12 @@ public class VoteApplication {
                 new VoteItem("Avenu", Arrays.asList(
                         new Dish("Salad", 110_00),
                         new Dish("Meat", 220_00),
-                        new Dish("Tea", 60_00)
+                        new Dish("Tea", 60_00))),
+                new VoteItem("McDonalds", Arrays.asList(
+                        new Dish("Potatos", 67_00),
+                        new Dish("Chips", 44_00),
+                        new Dish("Coffee", 90_00),
+                        new Dish("Tea", 45_00)
                 ))));
 
  /*       Vote vote = new Vote();
@@ -50,14 +55,9 @@ public class VoteApplication {
 
 
         voteRepository.save(vote);
+        long l = System.currentTimeMillis();
         vote = voteRepository.findAll().get(0);
-        System.out.println(vote);
-        System.out.println('\n' + "cache in work");
-        vote = voteRepository.findAll().get(0);
-        System.out.println(vote);
-        vote = voteRepository.findAll().get(0);
-        System.out.println(vote);
-        vote = voteRepository.findAll().get(0);
+        System.out.println(System.currentTimeMillis() - l);
         System.out.println(vote);
     }
 }

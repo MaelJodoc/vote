@@ -8,7 +8,6 @@ import javax.persistence.*;
  * Created by Смена on 07.05.2018.
  */
 @Entity
-@Table(name = "DISH")
 public class Dish extends AbstractPersistable<Long> {
     @Column
     private String name;

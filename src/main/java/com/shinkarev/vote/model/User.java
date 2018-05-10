@@ -1,5 +1,7 @@
 package com.shinkarev.vote.model;
 
+import org.springframework.data.jpa.domain.AbstractPersistable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.Email;
@@ -8,7 +10,7 @@ import javax.validation.constraints.Email;
  * Created by Смена on 07.05.2018.
  */
 
-public class User extends BaseModel {
+public class User extends AbstractPersistable<Long> {
     @Column
     private String email;
 
@@ -48,5 +50,15 @@ public class User extends BaseModel {
 
     public void setBanned(boolean banned) {
         isBanned = banned;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", id=" + getId() +
+                ", password='" + password + '\'' +
+                ", isBanned=" + isBanned +
+                '}';
     }
 }

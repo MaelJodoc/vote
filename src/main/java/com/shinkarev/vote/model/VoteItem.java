@@ -1,6 +1,7 @@
 package com.shinkarev.vote.model;
 
 import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
@@ -10,13 +11,13 @@ import java.util.List;
  * Created by Смена on 07.05.2018.
  */
 @Entity
-@Table(name = "VOTE_ITEM")
 public class VoteItem extends AbstractPersistable<Long> {
     @Column
     private String restaurantName;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "vote_item_id")
+    @Fetch(FetchMode.SUBSELECT)
     private List<Dish> dishes;
 
     public VoteItem(String restaurantName, List<Dish> dishes) {
