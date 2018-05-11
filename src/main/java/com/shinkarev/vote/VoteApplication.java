@@ -55,9 +55,11 @@ public class VoteApplication {
 
 
         voteRepository.save(vote);
-        long l = System.currentTimeMillis();
+        /*long l = System.currentTimeMillis();
         vote = voteRepository.findAll().get(0);
         System.out.println(System.currentTimeMillis() - l);
-        System.out.println(vote);
+        System.out.println(vote);*/
+        System.out.println('\n');
+        Vote vote1 = voteRepository.getVoteById(1L);
     }
 }
